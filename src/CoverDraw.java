@@ -15,11 +15,11 @@ public class CoverDraw
     int height;
     int width;
 
-    public CoverDraw(LinkedList<Color> palatte, int height, int width, String name)
+    public CoverDraw(LinkedList<Color> palette, int height, int width, String name)
     {
         this.width = width;
         this.height = height;
-        this.palette = palatte;
+        this.palette = palette;
         this.name = name;
     }
 
