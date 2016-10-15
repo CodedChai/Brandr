@@ -93,7 +93,7 @@ public class BrandrHome extends Frame implements GLEventListener
         GL2 gl=glAutoDrawable.getGL().getGL2();
         gl.glClear(GL.GL_COLOR_BUFFER_BIT);
 
-        coverDraw.DrawCover(glAutoDrawable, renderer, gl);
+        coverDraw.DrawCover(renderer, gl);
 //push?
     }
 
