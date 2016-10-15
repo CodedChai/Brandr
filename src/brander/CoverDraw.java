@@ -9,11 +9,17 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
 
+import static java.lang.Math.cos;
+import static java.lang.Math.sin;
+
 /**
  * Created by alvarpq on 10/15/2016.
  */
 public class CoverDraw
 {
+
+    private double DEG2RAD = 3.14159/180;
+
     String name;
     ArrayList<Color> palette;
 
@@ -71,6 +77,19 @@ public class CoverDraw
         }
     }
 
+    void drawCircle(float radius, GL2 gl)
+    {
+        gl.glBegin(gl.GL_LINE_LOOP);
+
+        for (int i=0; i < 360; i++)
+        {
+            double degInRad = i*DEG2RAD;
+            gl.glVertex2f((float)cos(degInRad)*radius, (float)sin(degInRad)*radius);
+        }
+
+        gl.glEnd();
+    }
+    
     private void DrawRectangle(int x, int y, int width, int height, Color color, GLAutoDrawable glAutoDrawable, GL2 gl)
     {
         if(x < 0)
