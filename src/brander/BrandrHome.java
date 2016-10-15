@@ -41,13 +41,9 @@ public class BrandrHome extends Frame implements GLEventListener
 
     public BrandrHome()
     {
-        super("Brandr");
 
-        ArrayList<Color> colors = new ArrayList<>();
-        colors.add(Color.orange);
-        colors.add(Color.yellow);
-        colors.add(Color.CYAN);
-        colors.add(Color.blue);
+        super("Brandr");
+        ColorPickr colorPick = new ColorPickr();
 
         glProfile = GLProfile.getDefault();
         glCapabilities = new GLCapabilities( glProfile );
@@ -67,7 +63,7 @@ public class BrandrHome extends Frame implements GLEventListener
         setSize( 640, 480 );
         setVisible(true);
 
-        coverDraw = new CoverDraw(colors, 640, 480, "PM me ur dankest memes gurl");
+        coverDraw = new CoverDraw(colorPick.GenerateColors(7), 640, 480, "PM me ur dankest memes gurl");
 
     }
 
@@ -84,7 +80,7 @@ public class BrandrHome extends Frame implements GLEventListener
         renderer = new TextRenderer(new Font("SansSerif", Font.BOLD, 36));
 
         GL2 gl = glAutoDrawable.getGL().getGL2();
-        gl.glClearColor(.8f, .8f, .8f, 0f); //set to non-transparent black
+        gl.glClearColor(1f, 1f, 1f, 0f); //set to non-transparent black
 
     }
 

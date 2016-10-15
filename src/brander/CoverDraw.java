@@ -45,12 +45,13 @@ public class CoverDraw
 
     private int[] FindFocalPoint()
     {
-        return  new int[] { width / 3,height / 3};
+        return  new int[] { width / 5, height / 5};
     }
 
     public void DrawName(TextRenderer renderer, GL2 gl)
     {
         DrawRectangle(0,height, width, namePartition, palette.get(0), gl);
+        DrawCircle(0,0, 10, Color.red, gl);
 
         //draw text
         renderer.beginRendering(width, height + namePartition);
@@ -65,9 +66,11 @@ public class CoverDraw
     {
         for(int x = 2; (x < palette.size()) ; x++)
         {
-            DrawRectangle(randy.nextInt(50 * x) + focalPoint[0], randy.nextInt(50 * x) + focalPoint[1],
-                    randy.nextInt(500 * (palette.size() - x % palette.size())), randy.nextInt(500 * (palette.size() - x% palette.size())),
+            DrawRectangle(randy.nextInt(20 * x) + focalPoint[0], randy.nextInt(20 * x) + focalPoint[1],
+                    randy.nextInt(palette.size() * 15 * (palette.size() - x % palette.size())), randy.nextInt(palette.size() * 15 * (palette.size() - x% palette.size())),
                     palette.get(x), gl);
+           /* DrawCircle(randy.nextInt(50 * x) * focalPoint[0], randy.nextInt(50 * x) + focalPoint[1],
+                    randy.nextInt(250 * (palette.size() - x % palette.size())), palette.get(x), gl);*/
         }
     }
 
@@ -110,6 +113,32 @@ public class CoverDraw
             gl.glVertex2d(x + width, y + height);
             gl.glVertex2d(x, height + y);
         }
+        gl.glEnd();
+    }
+
+    private void DrawCircle(int x, int y, float radius, Color color, GL2 gl)
+    {
+        if(x < 0)
+        {
+            x = 0;
+        }
+        if(y < 0)
+        {
+            y = 0;
+        }
+        System.out.println(color.getRed() + "," + color.getBlue() + ", " + color.getGreen());
+
+
+        gl.glColor3f( (float) color.getRed() / 255f,  (float) color.getGreen() / 255f,  (float) color.getBlue() / 255f);
+
+        gl.glBegin(gl.GL_POLYGON);
+        double degInRad = Math.PI / 180;
+
+        for (int i=0; i < 360; i++)
+        {
+            gl.glVertex2f((float)Math.cos(i * degInRad) * radius, (float)Math.cos(i * degInRad)*radius);
+        }
+
         gl.glEnd();
     }
 }
