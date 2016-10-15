@@ -1,6 +1,7 @@
 import com.jogamp.common.nio.Buffers;
 import com.jogamp.opengl.*;
 import com.jogamp.opengl.awt.GLCanvas;
+import com.jogamp.opengl.util.awt.TextRenderer;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -27,6 +28,8 @@ public class BrandrHome extends Frame implements GLEventListener
     GLProfile glProfile = null;
     GLCapabilities glCapabilities = null;
     GLCanvas glCanvas = null;
+
+    TextRenderer renderer;
 
     GL2 gl;
 
@@ -69,6 +72,9 @@ public class BrandrHome extends Frame implements GLEventListener
     public void init(GLAutoDrawable glAutoDrawable)
     {
         System.out.println("Entering init();");
+
+        renderer = new TextRenderer(new Font("SansSerif", Font.BOLD, 36));
+
         GL2 gl = glAutoDrawable.getGL().getGL2();
         gl.glClearColor(.8f, .8f, .8f, 0f); //set to non-transparent black
 
@@ -78,7 +84,7 @@ public class BrandrHome extends Frame implements GLEventListener
     public void display(GLAutoDrawable glAutoDrawable)
     {
         System.out.println("Entering display");
-        coverDraw.DrawCover(glAutoDrawable);
+        coverDraw.DrawCover(glAutoDrawable, renderer);
 //push?
     }
 

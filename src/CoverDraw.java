@@ -1,6 +1,7 @@
 import com.jogamp.opengl.GL;
 import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.GLAutoDrawable;
+import com.jogamp.opengl.util.awt.TextRenderer;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -29,10 +30,10 @@ public class CoverDraw
         this.name = name;
     }
 
-    public void DrawCover(GLAutoDrawable glAutoDrawable)
+    public void DrawCover(GLAutoDrawable glAutoDrawable, TextRenderer renderer)
     {
         double[] focalPoint = FindFocalPoint();
-        DrawName(glAutoDrawable);
+        DrawName(glAutoDrawable, renderer);
     }
 
     private double[] FindFocalPoint()
@@ -40,7 +41,7 @@ public class CoverDraw
         return  new double[] {(randy.nextInt(2) + 1) * height/3,(randy.nextInt(2) + 1) * width/3};
     }
 
-    public void DrawName(GLAutoDrawable glAutoDrawable)
+    public void DrawName(GLAutoDrawable glAutoDrawable, TextRenderer renderer)
     {
         GL2 gl=glAutoDrawable.getGL().getGL2();
         gl.glClear(GL.GL_COLOR_BUFFER_BIT);
@@ -55,6 +56,14 @@ public class CoverDraw
             gl.glVertex2d(0, height + namePartition);
         }
         gl.glEnd();
+
+        renderer.beginRendering(width, height + namePartition);
+        {
+            renderer.setColor(Color.cyan);
+            renderer.draw(name, 0, height);
+        }
+        renderer.endRendering();
+
 
     }
 
