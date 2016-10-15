@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="72efb681-82c3-4e1f-be62-e41f379f3d48" name="Default" comment="" />
+    <list default="true" id="72efb681-82c3-4e1f-be62-e41f379f3d48" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CoverDraw.java" afterPath="$PROJECT_DIR$/src/CoverDraw.java" />
+    </list>
     <ignored path="brandr FIXED.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -34,11 +36,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CoverDraw.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CoverDraw.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/CoverDraw.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="12" column="25" selection-start-line="12" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+            <state relative-caret-position="459">
+              <caret line="17" column="30" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -46,11 +48,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ColorPickr.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ColorPickr.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ColorPickr.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+            <state relative-caret-position="648">
+              <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#366#373#0" expanded="true" />
@@ -79,10 +81,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/CoverDraw.java" />
         <option value="$PROJECT_DIR$/src/BrandrHome.java" />
         <option value="$PROJECT_DIR$/src/HSL.java" />
         <option value="$PROJECT_DIR$/src/ColorPickr.java" />
+        <option value="$PROJECT_DIR$/src/CoverDraw.java" />
       </list>
     </option>
   </component>
@@ -521,23 +523,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CoverDraw.java">
+    <entry file="file://$PROJECT_DIR$/src/ColorPickr.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="12" column="25" selection-start-line="12" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+        <state relative-caret-position="648">
+          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#366#373#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ColorPickr.java">
+    <entry file="file://$PROJECT_DIR$/src/CoverDraw.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+        <state relative-caret-position="459">
+          <caret line="17" column="30" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#366#373#0" expanded="true" />
           </folding>
         </state>
       </provider>

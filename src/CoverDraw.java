@@ -1,5 +1,5 @@
 import java.awt.*;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -8,14 +8,14 @@ import java.util.Random;
 public class CoverDraw
 {
     String name;
-    LinkedList<Color> palette;
+    ArrayList<Color> palette;
 
     Random randy = new Random();
 
     int height;
     int width;
 
-    public CoverDraw(LinkedList<Color> palette, int height, int width, String name)
+    public CoverDraw(ArrayList<Color> palette, int height, int width, String name)
     {
         this.width = width;
         this.height = height;
