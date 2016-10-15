@@ -32,4 +32,6 @@ public class CoverDraw
     {
         return  new double[] {(randy.nextInt(2) + 1) * height/3,(randy.nextInt(2) + 1) * width/3};
     }
+
+
 }
