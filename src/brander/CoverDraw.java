@@ -1,8 +1,6 @@
 package brander;
 
-import com.jogamp.opengl.GL;
 import com.jogamp.opengl.GL2;
-import com.jogamp.opengl.GLAutoDrawable;
 import com.jogamp.opengl.util.awt.TextRenderer;
 
 import java.awt.*;
@@ -38,12 +36,11 @@ public class CoverDraw
         this.name = name;
     }
 
-    public void DrawCover(GLAutoDrawable glAutoDrawable, TextRenderer renderer, GL2 gl)
+    public void DrawCover(TextRenderer renderer, GL2 gl)
     {
         int[] focalPoint = FindFocalPoint();
-        DrawArea(focalPoint, glAutoDrawable, gl);
-        DrawName(glAutoDrawable, renderer, gl);
-
+        DrawArea(focalPoint, gl);
+        DrawName(renderer, gl);
     }
 
     private int[] FindFocalPoint()
@@ -51,12 +48,9 @@ public class CoverDraw
         return  new int[] { width / 3,height / 3};
     }
 
-    public void DrawName(GLAutoDrawable glAutoDrawable, TextRenderer renderer, GL2 gl)
+    public void DrawName(TextRenderer renderer, GL2 gl)
     {
-
-
-        DrawRectangle(0,height, width, namePartition, palette.get(0), glAutoDrawable, gl);
-
+        DrawRectangle(0,height, width, namePartition, palette.get(0), gl);
 
         //draw text
         renderer.beginRendering(width, height + namePartition);
@@ -67,13 +61,13 @@ public class CoverDraw
         renderer.endRendering();
     }
 
-    public void DrawArea(int[] focalPoint, GLAutoDrawable glAutoDrawable, GL2 gl)
+    public void DrawArea(int[] focalPoint, GL2 gl)
     {
         for(int x = 2; (x < palette.size()) ; x++)
         {
             DrawRectangle(randy.nextInt(50 * x) + focalPoint[0], randy.nextInt(50 * x) + focalPoint[1],
                     randy.nextInt(500 * (palette.size() - x % palette.size())), randy.nextInt(500 * (palette.size() - x% palette.size())),
-                    palette.get(x), glAutoDrawable, gl);
+                    palette.get(x), gl);
         }
     }
 
@@ -90,16 +84,19 @@ public class CoverDraw
         gl.glEnd();
     }
     
-    private void DrawRectangle(int x, int y, int width, int height, Color color, GLAutoDrawable glAutoDrawable, GL2 gl)
+
+    private void DrawRectangle(int x, int y, int width, int height, Color color, GL2 gl)
     {
         if(x < 0)
         {
             x = 0;
         }
+
         if(y < 0)
         {
             y = 0;
         }
+
         //Set a color (redish - no other components)
         System.out.println(color.getRed() + "," + color.getBlue() + ", " + color.getGreen());
        ;
