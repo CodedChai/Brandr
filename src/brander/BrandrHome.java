@@ -37,6 +37,8 @@ public class BrandrHome extends Frame implements GLEventListener
 
     CoverDraw coverDraw;
 
+    BackgroundDraw bd;
+
     public BrandrHome()
     {
         super("Brandr");
