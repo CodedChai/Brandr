@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.util.LinkedList;
+import java.util.Random;
 
 /**
  * Created by alvarpq on 10/15/2016.
@@ -8,6 +9,8 @@ public class CoverDraw
 {
     String name;
     LinkedList<Color> pallate;
+
+    Random randy = new Random();
 
     int height;
     int width;
@@ -27,6 +30,6 @@ public class CoverDraw
 
     private double[] FindFocalPoint()
     {
-        return  new double[] {1f,2f};
+        return  new double[] {(randy.nextInt(2) + 1) * height/3,(randy.nextInt(2) + 1) * width/3};
     }
 }
