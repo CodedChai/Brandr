@@ -4,10 +4,13 @@ import com.jogamp.opengl.awt.GLCanvas;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.nio.ByteBuffer;
+import java.util.ArrayList;
 
 import static com.jogamp.opengl.GL.GL_BYTE;
 import static com.jogamp.opengl.GL.GL_RGB;
@@ -27,10 +30,34 @@ public class BrandrHome extends Frame implements GLEventListener
 
     GL2 gl;
 
+    CoverDraw coverDraw;
+
     public BrandrHome()
     {
         super("Brandr");
 
+        ArrayList<Color> colors = new ArrayList<>();
+        colors.add(Color.black);
+        colors.add(Color.white);
+        coverDraw = new CoverDraw(colors, 640, 480, "PM me ur dankest memes gurl");
+
+        glProfile = GLProfile.getDefault();
+        glCapabilities = new GLCapabilities( glProfile );
+        glCanvas = new GLCanvas( glCapabilities );
+
+        glCanvas.addGLEventListener( this);
+
+        add( glCanvas );
+        addWindowListener( new WindowAdapter() {
+            public void windowClosing( WindowEvent windowevent ) {
+                remove( glCanvas );
+                dispose();
+                System.exit( 0 );
+            }
+        });
+
+        setSize( 640, 480 );
+        setVisible(true);
     }
 
     public static void main(String[] args)
@@ -41,18 +68,39 @@ public class BrandrHome extends Frame implements GLEventListener
     @Override
     public void init(GLAutoDrawable glAutoDrawable)
     {
+        System.out.println("Entering init();");
+        GL2 gl = glAutoDrawable.getGL().getGL2();
+        gl.glClearColor(.8f, .8f, .8f, 0f); //set to non-transparent black
 
     }
 
     @Override
     public void display(GLAutoDrawable glAutoDrawable)
     {
+        System.out.println("Entering display");
+        coverDraw.DrawCover(glAutoDrawable);
 //push?
     }
 
     @Override
     public void reshape(GLAutoDrawable glAutoDrawable, int x, int y, int width, int height)
     {
+        System.out.println("Entering reshape(); x="+x+" y="+y+" width="+width+" height="+height);
+        //Get the context
+        GL2 gl=glAutoDrawable.getGL().getGL2();
+        //Set up projection
+        gl.glMatrixMode( GL2.GL_PROJECTION );
+        gl.glLoadIdentity();
+        //this glOrtho call sets up a 640x480 unit plane with a parallel projection.
+        gl.glOrtho(0,640,0,480,0,10);
+        //Handle aspect ratio
+        double AR= 640.0/480.0;
+        if (AR*height<width) gl.glViewport(x, y, (int) (AR*height), height);
+        else gl.glViewport(x, y, width, (int) (width/AR));
+        gl.glViewport(x, y, (int) (AR*height), height);
+        gl.glMatrixMode(GL2.GL_MODELVIEW);
+        gl.glLoadIdentity();
+
 
     }
 
