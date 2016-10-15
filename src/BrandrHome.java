@@ -78,7 +78,7 @@ public class BrandrHome extends Frame implements GLEventListener
     public void display(GLAutoDrawable glAutoDrawable)
     {
         System.out.println("Entering display");
-
+        coverDraw.DrawCover(glAutoDrawable);
 //push?
     }
 

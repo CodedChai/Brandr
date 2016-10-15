@@ -20,7 +20,7 @@ public class CoverDraw
     int width;
     int namePartition;
 
-    public CoverDraw(ArrayList<Color> palette, int height, int width, String name)
+    public CoverDraw(ArrayList<Color> palette, int width, int height, String name)
     {
         namePartition = height / 4;
         this.width = width;
@@ -29,9 +29,10 @@ public class CoverDraw
         this.name = name;
     }
 
-    public void DrawCover()
+    public void DrawCover(GLAutoDrawable glAutoDrawable)
     {
         double[] focalPoint = FindFocalPoint();
+        DrawName(glAutoDrawable);
     }
 
     private double[] FindFocalPoint()
@@ -47,10 +48,12 @@ public class CoverDraw
         gl.glColor3f(0.3f,0.0f,0.0f);
         //Define a primitive -  A polygon in this case
         gl.glBegin(GL2.GL_POLYGON);
-            gl.glVertex2i( 100, 20);
-            gl.glVertex2i( 100,460);
-            gl.glVertex2i(540,460);
-            gl.glVertex2i(540, 20);
+        {
+            gl.glVertex2d(0, height);
+            gl.glVertex2d(width, height);
+            gl.glVertex2d(width, height + namePartition);
+            gl.glVertex2d(0, height + namePartition);
+        }
         gl.glEnd();
 
     }
