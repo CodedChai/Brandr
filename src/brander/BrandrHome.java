@@ -48,7 +48,6 @@ public class BrandrHome extends Frame implements GLEventListener
         colors.add(Color.yellow);
         colors.add(Color.CYAN);
         colors.add(Color.blue);
-        coverDraw = new CoverDraw(colors, 640, 480, "PM me ur dankest memes gurl");
 
         glProfile = GLProfile.getDefault();
         glCapabilities = new GLCapabilities( glProfile );
@@ -67,6 +66,9 @@ public class BrandrHome extends Frame implements GLEventListener
 
         setSize( 640, 480 );
         setVisible(true);
+
+        coverDraw = new CoverDraw(colors, 640, 480, "PM me ur dankest memes gurl");
+
     }
 
     public static void main(String[] args)
@@ -109,10 +111,12 @@ public class BrandrHome extends Frame implements GLEventListener
         //this glOrtho call sets up a 640x480 unit plane with a parallel projection.
         gl.glOrtho(0,640,0,480,0,10);
         //Handle aspect ratio
-        double AR= 640.0/480.0;
-        if (AR*height<width) gl.glViewport(x, y, (int) (AR*height), height);
-        else gl.glViewport(x, y, width, (int) (width/AR));
-        gl.glViewport(x, y, (int) (AR*height), height);
+        /*double AR= 640.0/480.0;
+        if (AR*height<width)
+            gl.glViewport(x, y, (int) (AR*height), height);
+        else
+            gl.glViewport(x, y, width, (int) (width/AR));*/
+        gl.glViewport(x, y, width, height);
         gl.glMatrixMode(GL2.GL_MODELVIEW);
         gl.glLoadIdentity();
 

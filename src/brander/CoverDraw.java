@@ -1,7 +1,6 @@
 package brander;
 
 import com.jogamp.opengl.GL2;
-import com.jogamp.opengl.GLAutoDrawable;
 import com.jogamp.opengl.util.awt.TextRenderer;
 
 import java.awt.*;
@@ -72,6 +71,7 @@ public class CoverDraw
         {
             x = 0;
         }
+
         if(y < 0)
         {
             y = 0;
