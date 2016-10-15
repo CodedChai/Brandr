@@ -10,8 +10,9 @@ import java.util.Random;
 public class ColorPickr {
 
 
-    public static ArrayList<Color> GenerateColors_GoldenRatioGradient(int colorCount, Color[] gradient, float saturation, float luminance)
+    public static ArrayList<Color> GenerateColors_GoldenRatioGradient(int colorCount)
     {
+        colorCount = 256 * 256 * 256;
         ArrayList<Color> colors = new ArrayList<Color>();
 
 //        float goldenRatioConjugate = 0.618033988749895f;
