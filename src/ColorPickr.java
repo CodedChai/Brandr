@@ -10,7 +10,7 @@ import java.util.Random;
 public class ColorPickr {
 
 
-    public static ArrayList<Color> GenerateColors_GoldenRatioGradient(int colorCount)
+    public static ArrayList<Color> GenerateColors(int colorCount)
     {
         colorCount = 256 * 256 * 256;
         ArrayList<Color> colors = new ArrayList<Color>();
