@@ -99,7 +99,7 @@ public class CoverDraw
 
         //Set a color (redish - no other components)
         System.out.println(color.getRed() + "," + color.getBlue() + ", " + color.getGreen());
-       ;
+
         gl.glColor3f( (float) color.getRed() / 255f,  (float) color.getGreen() / 255f,  (float) color.getBlue() / 255f);
         //Define a primitive -  A polygon in this case
         //draw bounding polygon.
@@ -111,8 +111,5 @@ public class CoverDraw
             gl.glVertex2d(x, height + y);
         }
         gl.glEnd();
-
-
     }
-
 }
