@@ -44,8 +44,8 @@ public class BrandrHome extends Frame implements GLEventListener
         super("Brandr");
 
         ArrayList<Color> colors = new ArrayList<>();
-        colors.add(Color.black);
-        colors.add(Color.white);
+        colors.add(Color.orange);
+        colors.add(Color.yellow);
         colors.add(Color.CYAN);
         colors.add(Color.blue);
         coverDraw = new CoverDraw(colors, 640, 480, "PM me ur dankest memes gurl");

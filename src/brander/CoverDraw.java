@@ -42,7 +42,7 @@ public class CoverDraw
 
     private int[] FindFocalPoint()
     {
-        return  new int[] {(randy.nextInt(2) + 1) * height / 3,(randy.nextInt(2) + 1) * width / 3};
+        return  new int[] { width / 3,height / 3};
     }
 
     public void DrawName(GLAutoDrawable glAutoDrawable, TextRenderer renderer, GL2 gl)
@@ -67,7 +67,7 @@ public class CoverDraw
         {
             DrawRectangle(randy.nextInt(50 * x) + focalPoint[0], randy.nextInt(50 * x) + focalPoint[1],
                     randy.nextInt(500 * (palette.size() - x % palette.size())), randy.nextInt(500 * (palette.size() - x% palette.size())),
-                    palette.get(x % palette.size()), glAutoDrawable, gl);
+                    palette.get(x), glAutoDrawable, gl);
         }
     }
 
@@ -82,10 +82,10 @@ public class CoverDraw
             y = 0;
         }
         //Set a color (redish - no other components)
-
-        gl.glColor3ui(color.getRed(), color.getGreen(), color.getBlue());
+        System.out.println(color.getRed() + "," + color.getBlue() + ", " + color.getGreen());
+       ;
+        gl.glColor3f( (float) color.getRed() / 255f,  (float) color.getGreen() / 255f,  (float) color.getBlue() / 255f);
         //Define a primitive -  A polygon in this case
-        System.out.println("ok");
         //draw bounding polygon.
         gl.glBegin(GL2.GL_POLYGON);
         {
