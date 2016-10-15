@@ -30,42 +30,71 @@ public class CoverDraw
         this.name = name;
     }
 
-    public void DrawCover(GLAutoDrawable glAutoDrawable, TextRenderer renderer)
+    public void DrawCover(GLAutoDrawable glAutoDrawable, TextRenderer renderer, GL2 gl)
     {
-        double[] focalPoint = FindFocalPoint();
-        DrawName(glAutoDrawable, renderer);
+        int[] focalPoint = FindFocalPoint();
+        DrawArea(focalPoint, glAutoDrawable, gl);
+        DrawName(glAutoDrawable, renderer, gl);
+
     }
 
-    private double[] FindFocalPoint()
+    private int[] FindFocalPoint()
     {
-        return  new double[] {(randy.nextInt(2) + 1) * height/3,(randy.nextInt(2) + 1) * width/3};
+        return  new int[] {(randy.nextInt(2) + 1) * height / 3,(randy.nextInt(2) + 1) * width / 3};
     }
 
-    public void DrawName(GLAutoDrawable glAutoDrawable, TextRenderer renderer)
+    public void DrawName(GLAutoDrawable glAutoDrawable, TextRenderer renderer, GL2 gl)
     {
-        GL2 gl=glAutoDrawable.getGL().getGL2();
-        gl.glClear(GL.GL_COLOR_BUFFER_BIT);
+
+
+        DrawRectangle(0,height, width, namePartition, palette.get(0), glAutoDrawable, gl);
+
+
+        //draw text
+        renderer.beginRendering(width, height + namePartition);
+        {
+            renderer.setColor(palette.get(1));
+            renderer.draw(name, 0, height + namePartition / 2);
+        }
+        renderer.endRendering();
+    }
+
+    public void DrawArea(int[] focalPoint, GLAutoDrawable glAutoDrawable, GL2 gl)
+    {
+        for(int x = 2; (x < palette.size()) ; x++)
+        {
+            DrawRectangle(randy.nextInt(50 * x) + focalPoint[0], randy.nextInt(50 * x) + focalPoint[1],
+                    randy.nextInt(500 * (palette.size() - x % palette.size())), randy.nextInt(500 * (palette.size() - x% palette.size())),
+                    palette.get(x % palette.size()), glAutoDrawable, gl);
+        }
+    }
+
+    private void DrawRectangle(int x, int y, int width, int height, Color color, GLAutoDrawable glAutoDrawable, GL2 gl)
+    {
+        if(x < 0)
+        {
+            x = 0;
+        }
+        if(y < 0)
+        {
+            y = 0;
+        }
         //Set a color (redish - no other components)
-        gl.glColor3f(0.3f,0.0f,0.0f);
+
+        gl.glColor3ui(color.getRed(), color.getGreen(), color.getBlue());
         //Define a primitive -  A polygon in this case
+        System.out.println("ok");
+        //draw bounding polygon.
         gl.glBegin(GL2.GL_POLYGON);
         {
-            gl.glVertex2d(0, height);
-            gl.glVertex2d(width, height);
-            gl.glVertex2d(width, height + namePartition);
-            gl.glVertex2d(0, height + namePartition);
+            gl.glVertex2d(x, y);
+            gl.glVertex2d(x + width, y);
+            gl.glVertex2d(x + width, y + height);
+            gl.glVertex2d(x, height + y);
         }
         gl.glEnd();
 
-        renderer.beginRendering(width, height + namePartition);
-        {
-            renderer.setColor(Color.cyan);
-            renderer.draw(name, 0, height);
-        }
-        renderer.endRendering();
-
 
     }
-
 
 }

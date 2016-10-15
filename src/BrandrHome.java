@@ -42,6 +42,8 @@ public class BrandrHome extends Frame implements GLEventListener
         ArrayList<Color> colors = new ArrayList<>();
         colors.add(Color.black);
         colors.add(Color.white);
+        colors.add(Color.CYAN);
+        colors.add(Color.blue);
         coverDraw = new CoverDraw(colors, 640, 480, "PM me ur dankest memes gurl");
 
         glProfile = GLProfile.getDefault();
@@ -84,7 +86,10 @@ public class BrandrHome extends Frame implements GLEventListener
     public void display(GLAutoDrawable glAutoDrawable)
     {
         System.out.println("Entering display");
-        coverDraw.DrawCover(glAutoDrawable, renderer);
+        GL2 gl=glAutoDrawable.getGL().getGL2();
+        gl.glClear(GL.GL_COLOR_BUFFER_BIT);
+
+        coverDraw.DrawCover(glAutoDrawable, renderer, gl);
 //push?
     }
 
