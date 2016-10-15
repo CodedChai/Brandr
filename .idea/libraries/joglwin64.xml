@@ -5,9 +5,8 @@
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="file://$USER_HOME$/Desktop/joglwin64" />
+      <root url="file://$PROJECT_DIR$/src" />
     </SOURCES>
     <jarDirectory url="file://$USER_HOME$/Desktop/joglwin64" recursive="false" />
-    <jarDirectory url="file://$USER_HOME$/Desktop/joglwin64" recursive="false" type="SOURCES" />
   </library>
 </component>

@@ -8,18 +8,18 @@ import java.util.Random;
 public class CoverDraw
 {
     String name;
-    LinkedList<Color> pallate;
+    LinkedList<Color> palette;
 
     Random randy = new Random();
 
     int height;
     int width;
 
-    public CoverDraw(LinkedList<Color> pallate, int height, int width, String name)
+    public CoverDraw(LinkedList<Color> palatte, int height, int width, String name)
     {
         this.width = width;
         this.height = height;
-        this.pallate = pallate;
+        this.palette = palatte;
         this.name = name;
     }
 
