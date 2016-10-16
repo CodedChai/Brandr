@@ -29,7 +29,7 @@ public class CoverDraw
 
     public CoverDraw(ArrayList<Color> palette, int width, int height, String name)
     {
-        namePartition = height / 4;
+        namePartition = height / 5;
         this.width = width;
         this.height = height - namePartition;
         this.palette = palette;

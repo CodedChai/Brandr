@@ -11,7 +11,6 @@ import java.util.Random;
  */
 public class ColorPickr {
 
-
     public ArrayList<Color> GenerateColors(int colorCount)
     {
 

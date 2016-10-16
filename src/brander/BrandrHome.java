@@ -7,13 +7,17 @@ import com.jogamp.opengl.util.awt.TextRenderer;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
+import java.util.Random;
 
 import static com.jogamp.opengl.GL.GL_BYTE;
 import static com.jogamp.opengl.GL.GL_RGB;
@@ -32,18 +36,21 @@ public class BrandrHome extends Frame implements GLEventListener
     GLCanvas glCanvas = null;
 
     TextRenderer renderer;
-
     GL2 gl;
 
     CoverDraw coverDraw;
-
     BackgroundDraw bd;
+    String companyName;
+    boolean gradient;
+    ColorPickr colorPick;
 
     public BrandrHome()
     {
 
         super("Brandr");
         ColorPickr colorPick = new ColorPickr();
+
+        setFocusable(true);
 
         glProfile = GLProfile.getDefault();
         glCapabilities = new GLCapabilities( glProfile );
@@ -63,7 +70,13 @@ public class BrandrHome extends Frame implements GLEventListener
         setSize( 640, 480 );
         setVisible(true);
 
-        coverDraw = new CoverDraw(colorPick.GenerateColors(7), 640, 480, "PM me ur dankest memes gurl");
+        bd = new BackgroundDraw(colorPick.GenerateColors(2), 640, 480);
+
+        companyName = "Truck Nuttin' Inc.";
+
+        coverDraw = new CoverDraw(colorPick.GenerateColors(7), 640, 480, companyName);
+
+        gradient = true;
 
     }
 
@@ -76,11 +89,12 @@ public class BrandrHome extends Frame implements GLEventListener
     public void init(GLAutoDrawable glAutoDrawable)
     {
         System.out.println("Entering init();");
-
         renderer = new TextRenderer(new Font("SansSerif", Font.BOLD, 36));
+        Random randy = new Random();
 
         GL2 gl = glAutoDrawable.getGL().getGL2();
-        gl.glClearColor(1f, 1f, 1f, 0f); //set to non-transparent black
+        //Color col = colorPick.GenerateColors(1).get(0);
+        gl.glClearColor(randy.nextFloat(), randy.nextFloat(), randy.nextFloat(), 1); //set to non-transparent black
 
     }
 
@@ -90,6 +104,10 @@ public class BrandrHome extends Frame implements GLEventListener
         System.out.println("Entering display");
         GL2 gl=glAutoDrawable.getGL().getGL2();
         gl.glClear(GL.GL_COLOR_BUFFER_BIT);
+
+        if (gradient) {
+            bd.drawGradient(gl);
+        }
 
         coverDraw.DrawCover(renderer, gl);
 //push?
@@ -157,5 +175,24 @@ public class BrandrHome extends Frame implements GLEventListener
         }
     }
 
+    KeyListener keyListener = new KeyListener() {
+        @Override
+        public void keyTyped(KeyEvent e) {
+
+        }
+
+        @Override
+        public void keyPressed(KeyEvent e) {
+            if (e.getKeyChar() == KeyEvent.VK_SPACE || e.getKeyCode() == KeyEvent.VK_SPACE) {
+                sendScreenshotToFile("C:/" + companyName + ".png");
+            }
+            System.out.println("key pressed");
+        }
+
+        @Override
+        public void keyReleased(KeyEvent e) {
+
+        }
+    };
 
 }
